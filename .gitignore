@@ -1,0 +1,47 @@
+# Entorno de Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.Python
+.env
+.venv/
+venv/
+pip-log.txt 
+
+pip-delete-this-directory.txt
+
+# FastAPI & Uvicorn logs
+logs/
+*.log
+
+# Archivos de bases de datos y migraciones
+alembic/versions/
+instance/
+db.sqlite3
+
+# Entorno y configuración local
+.env
+*.env
+.env.local
+*.db
+
+# Archivos de caché y temporales
+*.swp
+*.swo
+*.bak
+*.tmp
+*.~*
+*.DS_Store
+
+# IDEs y editores de código
+.vscode/
+.idea/
+*.iml
+
+# Dependencias instaladas
+*.lock
+
+
+#node_modules
+node_modules/
