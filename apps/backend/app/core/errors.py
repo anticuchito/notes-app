@@ -13,9 +13,18 @@ error_messages = {
         "msg": "contraseña incorrecta",
         "error_code": "INCORRECT_PASSWORD",
     },
+    "INVALID_CREDENTIALS": {
+        "msg": "credenciales incorrectas",
+        "error_code": "INVALID_CREDENTIALS",
+    },
 }
 
 
-def create_http_exception(status, error_msg):
+def create_http_exception(status, error_msg, headers=None):
 
-    return HTTPException(status_code=status, detail=error_messages[error_msg])
+    if headers:
+        return HTTPException(
+            status_code=status, detail=error_messages[error_msg], headers=headers
+        )
+    else:
+        return HTTPException(status_code=status, detail=error_messages[error_msg])

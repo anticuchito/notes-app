@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import OAuth2PasswordBearer
 from app.api.endpoints import auth, notes
 from app.core.config import settings
 from app.db.session import engine
@@ -35,9 +36,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Configurar JWT
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
 # Incluir las rutas
 app.include_router(auth.router, prefix="/api", tags=["auth"])
-# app.include_router(notes.router, prefix="/api", tags=["notes"]) FIXME - Falta implementar
+app.include_router(notes.router, prefix="/api", tags=["notes"])
 
 
 # Ruta de prueba (Health Check)

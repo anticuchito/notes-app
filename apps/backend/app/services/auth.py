@@ -1,8 +1,10 @@
 from app.db.models.users import User
-from app.utils import encrypt_password, check_password, generate_jwt_token
-from app.db.utils import create_in_db, get_by_value_in_db
+from app.utils import encrypt_password, check_password
+
+from app.db import create_in_db, get_by_value_in_db
 from app.db.session import SessionLocal
 from app.core.errors import create_http_exception
+from app.core.auth import generate_token
 
 
 def register(data):
@@ -23,13 +25,10 @@ def login(data):
     if not check_password(data.password, user["password_hash"]):
         raise create_http_exception(400, "INCORRECT_PASSWORD")
 
-    jwd_token = generate_jwt_token({"email": user["email"], "name": user["name"]})
+    jwd_token = generate_token({"email": user["email"], "name": user["name"]})
 
     return {
         "email": user["email"],
         "name": user["name"],
         "jwt": jwd_token,
     }
-
-
-#    user = get_by_value_in_db(, db=db_session, field="email", value=data.email)

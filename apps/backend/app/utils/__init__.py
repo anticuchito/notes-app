@@ -3,11 +3,12 @@ from passlib.context import CryptContext
 import jwt
 
 
-def generate_jwt_token(data):
+def encode_jwt_token(data):
     return jwt.encode(data, settings.secret_key, algorithm="HS256")
 
 
-from passlib.context import CryptContext
+def decode_jwt_token(token):
+    return jwt.decode(token, settings.secret_key, algorithms=["HS256"])
 
 
 def encrypt_password(password):
