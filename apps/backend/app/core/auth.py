@@ -1,5 +1,5 @@
 from app.core.config import settings
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from app.utils import decode_jwt_token, encode_jwt_token
 from app.core.errors import create_http_exception
 
@@ -18,5 +18,10 @@ def decode_token(token):
 
 def generate_token(data: dict):
     payload = data.copy()
-    payload.update({"iat": datetime.now(), "exp": datetime.now() + timedelta(hours=1)})
+    payload.update(
+        {
+            "iat": datetime.now(),
+            "exp": datetime.now(timezone.utc) + timedelta(hours=2),
+        }
+    )
     return encode_jwt_token(payload)

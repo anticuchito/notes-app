@@ -13,9 +13,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         401, "INVALID_CREDENTIALS", headers={"WWW-Authenticate": "Bearer"}
     )
     try:
-        payload = decode_token(token)
-        email: str = payload.get("email")
-
+        email = decode_token(token)
         if email is None:
             raise credentials_except2ion
         user = get_user_by_email(email)

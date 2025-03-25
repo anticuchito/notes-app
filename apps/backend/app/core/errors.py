@@ -17,6 +17,10 @@ error_messages = {
         "msg": "credenciales incorrectas",
         "error_code": "INVALID_CREDENTIALS",
     },
+    "INVALID_TOKEN": {
+        "msg": "token invalido",
+        "error_code": "INVALID_TOKEN",
+    },
 }
 
 
