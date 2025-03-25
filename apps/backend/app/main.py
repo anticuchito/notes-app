@@ -11,17 +11,19 @@ from app.db.base import Base
 def init_db():
     Base.metadata.create_all(bind=engine)
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
     yield
+
 
 # Crear la aplicación FastAPI
 app = FastAPI(
     title="Mi API con FastAPI",
     description="Backend estructurado con FastAPI",
     version="1.0.0",
-    lifespan=lifespan,	
+    lifespan=lifespan,
 )
 
 # Configurar CORS

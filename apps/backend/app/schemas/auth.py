@@ -12,3 +12,9 @@ class AuthRegister(BaseModel):
     email: EmailStr
     password: str
     repeat_password: str
+    
+class AuthRegisterResponse(BaseModel):
+     email: str
+     name: str
+     password: str
+     created_at: str
