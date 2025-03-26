@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently \"cd apps/backend && uvicorn main:app --reload\" \"cd apps/frontend && pnpm run dev\""
+    "dev": "concurrently \"cd apps/backend && uvicorn main:app --reload\" \"cd apps/frontend && npm run dev\""
   },
   "dependencies": {
     "concurrently": "^9.1.2"
