@@ -1,23 +1,13 @@
-from pydantic import BaseModel, EmailStr
-from typing import Optional
+from pydantic import BaseModel
 
 
-class Note(BaseModel):
+class NoteRequest(BaseModel):
+    title: str
+    content: str
+
+
+class NoteResponse(BaseModel):
     id: int
     title: str
-    description: str
-    owner_email: str
-
-
-class NoteCreate(BaseModel):
-    title: str
-    description: str
-
-
-class NoteUpdate(BaseModel):
-    title: str
-    description: str
-
-
-class NoteDelete(BaseModel):
-    id: int
+    content: str
+    version: int

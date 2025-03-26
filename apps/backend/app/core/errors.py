@@ -21,6 +21,18 @@ error_messages = {
         "msg": "token invalido",
         "error_code": "INVALID_TOKEN",
     },
+    "CONFLICT_UPDATE_NOTE": {
+        "msg": "error al actualizar el item",
+        "error_code": "CONFLICT_UPDATE_NOTE",
+    },
+    "NOTE_NOT_FOUND": {
+        "msg": "nota no encontrada",
+        "error_code": "NOTE_NOT_FOUND",
+    },
+    "NOTE_ALREADY_EXISTS": {
+        "msg": "la nota ya existe",
+        "error_code": "NOTE_ALREADY_EXISTS",
+    },
 }
 
 

@@ -9,16 +9,16 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_except2ion = create_http_exception(
+    credentials_exception = create_http_exception(
         401, "INVALID_CREDENTIALS", headers={"WWW-Authenticate": "Bearer"}
     )
     try:
         email = decode_token(token)
         if email is None:
-            raise credentials_except2ion
+            raise credentials_exception
         user = get_user_by_email(email)
 
         return user
 
-    except PyJWTError:
-        raise credentials_except2ion
+    except (PyJWTError, BaseException):
+        raise credentials_exception

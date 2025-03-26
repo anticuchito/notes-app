@@ -4,10 +4,10 @@ from app.utils import decode_jwt_token, encode_jwt_token
 from app.core.errors import create_http_exception
 
 
-def decode_token(token):
+def decode_token(token: str):
     try:
         payload = decode_jwt_token(token)
-        email = payload["email"]
+        email: str | None = payload["email"]
 
         if email is None:
             raise create_http_exception(400, "INVALID_TOKEN")

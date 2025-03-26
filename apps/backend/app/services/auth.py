@@ -21,7 +21,9 @@ def register(data):
 
 def login(data):
     db_session = SessionLocal()
-    user = get_by_value_in_db(User, db_session, field="email", value=data.email)
+    user = get_by_value_in_db(
+        User, db_session, field="email", value=data.email
+    ).__dict__
     if not check_password(data.password, user["password_hash"]):
         raise create_http_exception(400, "INCORRECT_PASSWORD")
 
