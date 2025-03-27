@@ -19,6 +19,7 @@ def register(data):
 
     token = generate_token({"email": user.email, "name": user.name})
 
+    db_session.close()
     return {
         "email": user.email,
         "name": user.name,
@@ -35,7 +36,7 @@ def login(data):
         raise create_http_exception(400, "INCORRECT_PASSWORD")
 
     token = generate_token({"email": user["email"], "name": user["name"]})
-
+    db_session.close()
     return {
         "email": user["email"],
         "name": user["name"],
