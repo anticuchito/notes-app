@@ -41,15 +41,3 @@ def login(data):
         "name": user["name"],
         "token": token,
     }
-
-
-def verify(token):
-    token_data = decode_token(token)
-
-    if token_data is None:
-        raise create_http_exception(400, "INVALID_TOKEN")
-
-    return {
-        "msg": "Token verificado correctamente",
-        "email": token_data,
-    }
