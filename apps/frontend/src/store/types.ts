@@ -13,6 +13,7 @@ export type Note = {
 
 export type NotesState = {
   notes: Note[];
+  selectedNote: Note | null;
   isLoading: boolean;
   error: string | null;
 };

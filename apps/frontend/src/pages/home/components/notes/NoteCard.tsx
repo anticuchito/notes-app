@@ -10,12 +10,22 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 interface NoteCardProps {
+  id: number;
   title: string;
   content: string;
   date: string;
+  handleSelected: (id: number) => void;
+  handleDelete: (id: number) => void;
 }
 
-const NoteCard = ({ title, content, date }: NoteCardProps) => {
+const NoteCard = ({
+  id,
+  title,
+  content,
+  date,
+  handleSelected,
+  handleDelete,
+}: NoteCardProps) => {
   return (
     <Card className='flex h-full flex-col transition-shadow hover:shadow-md'>
       <CardHeader className='flex flex-row items-start justify-between space-y-0 pb-2'>
@@ -34,8 +44,13 @@ const NoteCard = ({ title, content, date }: NoteCardProps) => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end'>
-              <DropdownMenuItem>Editar</DropdownMenuItem>
-              <DropdownMenuItem className='text-destructive'>
+              <DropdownMenuItem onClick={() => handleSelected(id)}>
+                Editar
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className='text-destructive'
+                onClick={() => handleDelete(id)}
+              >
                 Eliminar
               </DropdownMenuItem>
             </DropdownMenuContent>
