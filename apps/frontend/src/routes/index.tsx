@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Home from '@/pages/home/ìndex';
+import Home from '@/pages/home';
 import Auth from '@/pages/auth';
 import PrivateRoute from './PrivateRoute';
 

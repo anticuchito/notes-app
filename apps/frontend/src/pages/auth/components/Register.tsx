@@ -12,7 +12,7 @@ interface props {
   onSubmit: (formCreateAccount: FormCreateAccount) => void;
 }
 
-export function Register({ isLoading, onSubmit }: props) {
+const Register = ({ isLoading, onSubmit }: props) => {
   const [formCreateAccount, setFormCreateAccount] = useState<FormCreateAccount>(
     {
       name: '',
@@ -78,6 +78,6 @@ export function Register({ isLoading, onSubmit }: props) {
       </Button>
     </form>
   );
-}
+};
 
 export default Register;
