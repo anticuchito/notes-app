@@ -1,11 +1,16 @@
-import { Button } from '@/components/ui/button';
+import { RouterProvider } from 'react-router-dom';
+import { useAuth } from './hooks/useAuth';
+import { router } from './routes';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
-function App() {
+const App = () => {
+  useAuth(); // Verifica el token al montar la aplicación
   return (
-    <div className='flex flex-col items-center justify-center min-h-svh'>
-      <Button variant='secondary'>Secondary</Button>
-    </div>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
-}
+};
 
 export default App;
