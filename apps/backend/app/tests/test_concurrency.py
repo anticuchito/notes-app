@@ -78,7 +78,7 @@ async def test_concurrent_update(test_note):
 
         # Obtener el token de la respuesta
         token_data = response.json()
-        access_token = token_data.get("jwt")
+        access_token = token_data.get("token")
 
         if not access_token:
             pytest.fail("No access token received")
